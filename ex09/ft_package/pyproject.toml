@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ft-package"
+version = "0.0.1"
+description = ''
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "lamed0", email = "memedlamrani@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/lamed0/ft-package#readme"
+Issues = "https://github.com/lamed0/ft-package/issues"
+Source = "https://github.com/lamed0/ft-package"
+
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/ft_package tests}"
+
+[tool.coverage.run]
+source_pkgs = ["ft_package", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/ft_package/__about__.py",
+]
+
+[tool.coverage.paths]
+ft_package = ["src/ft_package", "*/ft-package/src/ft_package"]
+tests = ["tests", "*/ft-package/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
