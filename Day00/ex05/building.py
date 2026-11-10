@@ -1,50 +1,39 @@
 import sys
+import string
 
 
-def check_text(object: str) -> int:
+def check_text(text: str) -> None:
+    """Counts and displays the sums of upper-case characters, lower-case
+
+    characters, punctuation marks, spaces, and digits in the provided text.
     """
-    This function checks the string passed in
-        argv and counts the character
-    """
-    Upp_Let = 0
-    Low_Let = 0
-    Ponct_Mar = 0
-    Space = 0
-    Digit = 0
-    char = 0
+    upp_let = sum(1 for c in text if c.isupper())
+    low_let = sum(1 for c in text if c.islower())
+    ponct_mar = sum(1 for c in text if c in string.punctuation)
+    space = sum(1 for c in text if c.isspace())
+    digit = sum(1 for c in text if c.isdigit())
+    char_count = len(text)
 
-    for i in object:
-        if i.isupper():
-            Upp_Let += 1
-        elif i.islower():
-            Low_Let += 1
-        elif not i.isalnum() and not i.isspace():
-            Ponct_Mar += 1
-        elif i.isspace():
-            Space += 1
-        elif i.isdigit():
-            Digit += 1
-    char = Upp_Let + Low_Let + Ponct_Mar + Space + Digit
-    print("The text contains", char, "characters:")
-    print(Upp_Let, "upper letters")
-    print(Low_Let, "lower letters")
-    print(Ponct_Mar, "punctuation marks")
-    print(Space, "spaces")
-    print(Digit, "digits")
-    return (0)
+    print(f"The text contains {char_count} characters:")
+    print(f"{upp_let} upper letters")
+    print(f"{low_let} lower letters")
+    print(f"{ponct_mar} punctuation marks")
+    print(f"{space} spaces")
+    print(f"{digit} digits")
 
 
 def main():
-
-    if len(sys.argv) > 2:
-        print("AssertionError: more than one argument is provided")
-        return (1)
-    if len(sys.argv) == 1:
-        print("What is the text to count?", end="\n", flush=True)
-        text = sys.stdin.read()
+    """Main function to handle argument validation and prompt user if needed."""
+    try:
+        assert len(sys.argv) <= 2, "more than one argument is provided"
+        if len(sys.argv) == 1 or sys.argv[1] is None or sys.argv[1] == "":
+            print("What is the text to count?")
+            text = sys.stdin.readline()
+        else:
+            text = sys.argv[1]
         check_text(text)
-        return (0)
-    check_text(sys.argv[1])
+    except AssertionError as msg:
+        print(f"AssertionError: {msg}")
 
 
 if __name__ == "__main__":

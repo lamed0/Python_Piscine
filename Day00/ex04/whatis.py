@@ -2,19 +2,22 @@ import sys
 
 
 def main():
-
-    if len(sys.argv) > 2:
-        print("AssertionError: more than one argument is provided")
-    elif len(sys.argv) == 2:
+    try:
+        assert len(sys.argv) <= 2, "more than one argument is provided"
+        if len(sys.argv) < 2:
+            return
         try:
             number = int(sys.argv[1])
-            if number % 2 == 0:
-                print("I'm Even.")
-            else:
-                print("I'm Odd.")
         except ValueError:
-            print("AssertionError: argument is not an integer")
+            raise AssertionError("argument is not an integer")
+
+        if number % 2 == 0:
+            print("I'm Even.")
+        else:
+            print("I'm Odd.")
+    except AssertionError as msg:
+        print(f"AssertionError: {msg}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
