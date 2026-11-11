@@ -2,6 +2,7 @@ from S1E7 import Baratheon, Lannister
 
 
 class King(Baratheon, Lannister):
+    """The king inherit from his incestors."""
     def __init__(self, first_name, is_alive = True, family_name = "Baratheon", eyes = "brown", hairs = "dark"):
         super().__init__(first_name, is_alive, family_name, eyes, hairs)
 
