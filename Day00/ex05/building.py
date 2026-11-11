@@ -23,7 +23,8 @@ def check_text(text: str) -> None:
 
 
 def main():
-    """Main function to handle argument validation and prompt user if needed."""
+    """Main function to handle argument validation and prompt
+    user if needed."""
     try:
         assert len(sys.argv) <= 2, "more than one argument is provided"
         if len(sys.argv) == 1 or sys.argv[1] is None or sys.argv[1] == "":
