@@ -1,6 +1,10 @@
+def ft_filter(function, iterable):
+    """filter(function or None, iterable) --> filter object
 
-def ft_filter(function, it):
-    """Return an iterator containing items that pass the function."""
+Return an iterator yielding those items of iterable for which function(item)
+is true. If function is None, return the items that are true.
+"""
     if function is None:
-        return iter([x for x in it if x])
-    return iter([x for x in it if function(x)])
+        return iter([item for item in iterable if item])
+    return iter([item for item in iterable if function(item)])
+
