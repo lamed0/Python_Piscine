@@ -2,7 +2,8 @@ import sys
 
 
 def main():
-    MORSE_CODE = {
+    """Encodes a string argument into Morse Code using a dictionary."""
+    morse_code = {
         " ": "/",
         "A": ".-",
         "B": "-...",
@@ -41,17 +42,20 @@ def main():
         "8": "---..",
         "9": "----.",
     }
-    res = ""
 
-    if len(sys.argv) != 2:
-        print("AssertionError: the arguments are bad")
-        return (1)
-    for i in sys.argv[1]:
-        if not i.isalnum() and not i.isspace():
-            print("AssertionError: the arguments are bad")
-            return (1)
-        res += MORSE_CODE[i.upper()] + " "
-    print(res.rstrip())
+    try:
+        assert len(sys.argv) == 2, "the arguments are bad"
+        text = sys.argv[1]
+
+        assert all(c.isalnum() or c.isspace() for c in text), (
+            "the arguments are bad"
+        )
+
+        encoded = " ".join(morse_code[c.upper()] for c in text)
+        print(encoded)
+
+    except AssertionError as msg:
+        print(f"AssertionError: {msg}")
 
 
 if __name__ == "__main__":
