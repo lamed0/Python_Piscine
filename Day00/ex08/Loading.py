@@ -1,5 +1,4 @@
 
-
 def ft_tqdm(lst: range) -> None:
     """Yield items while displaying their progress through the iterable."""
     total = len(lst)
@@ -13,5 +12,3 @@ def ft_tqdm(lst: range) -> None:
             end="",
         )
         yield item
-
-    print()
