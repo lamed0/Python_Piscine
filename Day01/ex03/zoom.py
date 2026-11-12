@@ -5,11 +5,10 @@ import matplotlib.pyplot as plt
 def main():
     img_loaded = ft_load("animal.jpeg")
     zoomed = zoom_img(img_loaded)
+    print(img_loaded)
     print("New shape after slicing:", zoomed.shape)
     print(zoomed)
     plt.imshow(zoomed[:, :, 0], cmap="gray")
-    plt.xlabel("X axis")
-    plt.ylabel("Y axis")
     plt.show()
 
 
