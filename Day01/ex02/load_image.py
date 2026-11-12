@@ -21,7 +21,5 @@ def ft_load(path: str) -> np.ndarray:
     except OSError as error:
         raise AssertionError(f"Unable to open image: {error}") from error
 
-    print("Image format:", image_format)
     print("The shape of image is:", pixels.shape)
-    print(pixels)
     return pixels
