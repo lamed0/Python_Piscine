@@ -1,7 +1,5 @@
 from load_image import ft_load, zoom_img
 import matplotlib.pyplot as plt
-import numpy as np
-
 
 
 def main():
@@ -13,7 +11,6 @@ def main():
     plt.xlabel("X axis")
     plt.ylabel("Y axis")
     plt.show()
-    
 
 
 if __name__ == "__main__":
