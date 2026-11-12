@@ -1,6 +1,5 @@
 from PIL import Image, UnidentifiedImageError
-import numpy as np 
-
+import numpy as np
 
 
 def ft_load(path: str) -> np.ndarray:
@@ -26,4 +25,3 @@ def ft_load(path: str) -> np.ndarray:
     print("The shape of image is:", pixels.shape)
     print(pixels)
     return pixels
-
